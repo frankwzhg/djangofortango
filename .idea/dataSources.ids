@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Django default" uuid="5f169fd2-f28a-4346-843d-391ec2aa80e4">
+    <database-info product="MySQL" version="5.5.37-0ubuntu0.13.10.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="test"/>
+    <table name="auth_group" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id" table="auth_group_permissions" schema="" catalog="test" columns="group_id"/>
+      <exported-key name="auth_user_groups_group_id_30a071c9_fk_auth_group_id" table="auth_user_groups" schema="" catalog="test" columns="group_id"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="group_id" unique="true" columns="permission_id"/>
+      <index name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" unique="false" columns="permission_id"/>
+    </table>
+    <table name="auth_permission" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="codename" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_permissi_content_type_id_51277a81_fk_django_content_type_id" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" table="auth_group_permissions" schema="" catalog="test" columns="permission_id"/>
+      <exported-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" table="auth_user_user_permissions" schema="" catalog="test" columns="permission_id"/>
+      <index name="content_type_id" unique="true" columns="codename"/>
+    </table>
+    <table name="auth_user" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="password" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="is_superuser" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="username" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="254" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_staff" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="is_active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="date_joined" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_user_groups_user_id_24702650_fk_auth_user_id" table="auth_user_groups" schema="" catalog="test" columns="user_id"/>
+      <exported-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" table="auth_user_user_permissions" schema="" catalog="test" columns="user_id"/>
+      <exported-key name="django_admin_log_user_id_1c5f563_fk_auth_user_id" table="django_admin_log" schema="" catalog="test" columns="user_id"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+    <table name="auth_user_groups" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_user_groups_group_id_30a071c9_fk_auth_group_id" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_user_groups_user_id_24702650_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="group_id"/>
+      <index name="auth_user_groups_group_id_30a071c9_fk_auth_group_id" unique="false" columns="group_id"/>
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="permission_id"/>
+      <index name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" unique="false" columns="permission_id"/>
+    </table>
+    <table name="books_author" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="254" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="books_book_authors_author_id_407dfb10_fk_books_author_id" table="books_book_authors" schema="" catalog="test" columns="author_id"/>
+    </table>
+    <table name="books_book" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="publication_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="publisher_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="num_page" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="books_book_publisher_id_73f7935_fk_books_publisher_id" columns="publisher_id" ref-table="books_publisher" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="books_book_authors_book_id_30c661c_fk_books_book_id" table="books_book_authors" schema="" catalog="test" columns="book_id"/>
+      <index name="books_book_2604cbea" unique="false" columns="publisher_id"/>
+    </table>
+    <table name="books_book_authors" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="book_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="author_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="books_book_authors_author_id_407dfb10_fk_books_author_id" columns="author_id" ref-table="books_author" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="books_book_authors_book_id_30c661c_fk_books_book_id" columns="book_id" ref-table="books_book" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="book_id" unique="true" columns="author_id"/>
+      <index name="books_book_authors_author_id_407dfb10_fk_books_author_id" unique="false" columns="author_id"/>
+    </table>
+    <table name="books_publisher" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="state_province" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="website" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="books_book_publisher_id_73f7935_fk_books_publisher_id" table="books_book" schema="" catalog="test" columns="publisher_id"/>
+    </table>
+    <table name="data_source" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TVal" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YCprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="data_source_recal" schema="" catalog="test" type="TABLE">
+      <column name="Date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="F_TVal" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="F_Tamount" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="F_Tamount_now" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="YCprice" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="keep_cur" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="keep_stock_amount" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="percent_net" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="percent_net_Csum" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="percent_net_Nsum" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="percent_net_now" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="django_admin_log" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="action_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="object_id" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="object_repr" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="change_message" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="django_admin_log_user_id_1c5f563_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="django_admin__content_type_id_5151027a_fk_django_content_type_id" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="django_admin__content_type_id_5151027a_fk_django_content_type_id" unique="false" columns="content_type_id"/>
+      <index name="django_admin_log_user_id_1c5f563_fk_auth_user_id" unique="false" columns="user_id"/>
+    </table>
+    <table name="django_content_type" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="app_label" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="auth_permissi_content_type_id_51277a81_fk_django_content_type_id" table="auth_permission" schema="" catalog="test" columns="content_type_id"/>
+      <exported-key name="django_admin__content_type_id_5151027a_fk_django_content_type_id" table="django_admin_log" schema="" catalog="test" columns="content_type_id"/>
+      <index name="django_content_type_app_label_3ec8c61c_uniq" unique="true" columns="app_label,model"/>
+    </table>
+    <table name="django_migrations" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="app" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="applied" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="django_session" schema="" catalog="test" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="session_data" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="expire_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="session_key"/>
+      <index name="django_session_de54fa62" unique="false" columns="expire_date"/>
+    </table>
+    <table name="fund_Close_FD" schema="" catalog="test" type="TABLE">
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tnet" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="B_D_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_Close_FD_info" schema="" catalog="test" type="TABLE">
+      <column name="C_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Fmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Samount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Sservice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_manager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_owner" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_type" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="K_years" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OP_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent1" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent2" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_location" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sec_cat" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Stock_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_Close_SK" schema="" catalog="test" type="TABLE">
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="buy" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="changepercent" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="high" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="low" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="open" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pricechange" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sell" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="settlement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="symbol" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ticktime" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="volume" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_Close_cal" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_Tamount_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Csum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Nsum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_Close_rate" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_Close_top_stocks" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_ETF_FD" schema="" catalog="test" type="TABLE">
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tnet" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="B_D_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_ETF_FD_info" schema="" catalog="test" type="TABLE">
+      <column name="C_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Fmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Samount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Sservice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_manager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_owner" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_type" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="K_years" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OP_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent1" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent2" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_location" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sec_cat" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Stock_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_ETF_SK" schema="" catalog="test" type="TABLE">
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="buy" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="changepercent" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="high" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="low" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="open" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pricechange" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sell" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="settlement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="symbol" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ticktime" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="volume" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_ETF_cal" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_Tamount_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Csum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Nsum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_ETF_rate" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_ETF_top_stocks" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_LOF_FD" schema="" catalog="test" type="TABLE">
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tnet" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="B_D_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_LOF_FD_info" schema="" catalog="test" type="TABLE">
+      <column name="C_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Fmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Samount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Sservice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_manager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_owner" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_type" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="K_years" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OP_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent1" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent2" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_location" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sec_cat" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Stock_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_LOF_SK" schema="" catalog="test" type="TABLE">
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="buy" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="changepercent" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="high" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="low" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="open" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pricechange" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sell" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="settlement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="symbol" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ticktime" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="volume" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_LOF_cal" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_Tamount_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Csum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Nsum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_LOF_rate" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_LOF_top_stocks" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_creative_FD" schema="" catalog="test" type="TABLE">
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tnet" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="B_D_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_creative_FD_info" schema="" catalog="test" type="TABLE">
+      <column name="C_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Dmanager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Fmanagement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Samount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Sservice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_manager" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_owner" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_type" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="K_years" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Min_Bvalue" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OP_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent1" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_agent2" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="S_location" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sec_cat" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Stock_style" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_creative_SK" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TOprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YCprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Cprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="THprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TLprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DealData" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DealAmout" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Time" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_creative_cal" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="F_Tamount_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_now" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Csum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="percent_net_Nsum" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_creative_rate" schema="" catalog="test" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="buy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+    </table>
+    <table name="fund_creative_top_stocks" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="fund_data" schema="" catalog="test" type="TABLE">
+      <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tnet" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="B_D_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_date_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_Tamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" def="JzIwMTUtMDEtMjkn"/>
+    </table>
+    <table name="fund_test" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="F_TCVal" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+    </table>
+    <table name="rango_category" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="rango_page_category_id_1d28d1ea5dbac5ab_fk_rango_category_id" table="rango_page" schema="" catalog="test" columns="category_id"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
+    <table name="rango_page" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="views" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="rango_page_category_id_1d28d1ea5dbac5ab_fk_rango_category_id" columns="category_id" ref-table="rango_category" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="rango_page_category_id_1d28d1ea5dbac5ab_fk_rango_category_id" unique="false" columns="category_id"/>
+    </table>
+    <table name="stock_data" schema="" catalog="test" type="TABLE">
+      <column name="amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="buy" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="changepercent" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="favor" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="guba" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="high" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="low" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mktcap" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nmc" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="nta" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="open" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pb" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="per" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="per_d" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="pricechange" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sell" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="settlement" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="symbol" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ticktime" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="turnoverratio" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="volume" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="stock_data_old" schema="" catalog="test" type="TABLE">
+      <column name="Code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TOprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YCprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Cprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="THprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TLprice" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DealData" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DealAmout" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Date" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Time" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="top_stock" schema="" catalog="test" type="TABLE">
+      <column name="F_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="df_with_last" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="index_num" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_cur" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_it_fundamount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keep_stock_amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_net" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="percent_stock" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_code" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
+      <column name="get_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" def="JzIwMTUtMDEtMjkn"/>
+    </table>
+  </data-source>
+</component>
