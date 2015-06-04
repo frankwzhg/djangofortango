@@ -10,15 +10,19 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-    <h1>Rango say... hello {{ user.username }}</h1>
+    <h1>Rango say... hello {{ user.username }}</h1><br />
+        <a href="{% url 'restricted' %}">Restricted Page</a><br />
+        <a href="{% url 'logout' %}">Logout</a>
     {% else %}
+        <a href="{% url 'register' %}">Register Here</a><br />
+        <a href="{% url 'login' %}">Login</a><br />
     <h1>Rango says ...</h1>
     hello world!<strong>{{ boldmessage }}</strong><br />
     {% endif %}
     {% if categories %}
         <ul>
         {% for category in categories %}
-        <li><a href="/rango/category/{{ category.slug }}" >{{ category }}</a></li>
+        <li><a href="{% url 'category' category_slug %}" >{{ category.name }}</a></li>
         {% endfor %}
         {% for page in pages %}
         <li>{{ page }}</li>
@@ -27,10 +31,10 @@
     {% else %}
         <strong>There are no categories present</strong>
     {% endif %}
-    <a href="/rango/add_category/">Add a New Category</a><br />
-    <a href="/rango/register/">Register Here</a><br />
-    <a href="/rango/login/">Login</a><br />
-    <a href="/rango/about/">About</a>
+    <a href="{% url 'add_category' %}">Add a New Category</a><br />
+    <a href="{% url 'register' %}">Register Here</a><br />
+    <a href="{% url 'login' %}">Login</a><br />
+    <a href="{% url 'about' %}">About</a>
     <img src="{% static "image/DSC_0228.jpg" %}" alt="Picture of Rango" />
 </body>
 </html>
