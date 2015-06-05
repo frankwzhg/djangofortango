@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
@@ -15,8 +16,47 @@ def index(request):
     page_list = Page.objects.order_by('views')[:5]
     context_dict = {'categories': category_list, 'pages':page_list}
 
+    # get the number of visits to the site
+    # we use the cookie.get() function to obtain the visits cookie.
+    # if the cookie exists, the value returned is casted to a integer
+    # if the cookie doesn't exists, we default to zero and casted that
+
+    visits = request.session.get('visits')
+    if not visits:
+        visits = 1
+    reset_last_visit_time = False
+    last_visit = request.session.get('last_visit')
     # Render the response and send it back
-    return render(request, 'rango/index.html', context_dict)
+    # response = render(request, 'rango/index.html', context_dict)
+
+    # Does the last_visit exist?
+    if last_visit:
+        # yes it does! get the cookie value
+        # last_visit = request.COOKIES['last_visit']
+        # Cast the value to python date/time object
+        last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+        # last_visit_time = '2015-06-05 10:30:30'
+        # if it't been more than one day since the last visit ...
+        if (datetime.now()-last_visit_time).days > 0 :
+            visits = visits + 1
+
+            reset_last_visit_time = True
+    else:
+    #     Cookie last_visit does not exist, so flag that will be set
+        reset_last_visit_time = True
+
+        # context_dict['visit'] = visits
+
+        #Obtain our Response object early so we can add cookie information.
+        # response = render(request, 'rango/index.html', context_dict)
+    if reset_last_visit_time:
+        request.session['last_visit'] = str(datetime.now())
+        request.session['visits'] = visits
+    context_dict['visits'] = visits
+    response = render(request, 'rango/index.html', context_dict)
+    # Return response back to the user, updating any cookies that need changed.
+    return response
+
 def about(request):
 
     # return HttpResponse('Rango says here is the about page')
@@ -105,6 +145,7 @@ def add_page(request, category_name_slug):
 
 
 def register(request):
+
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
 

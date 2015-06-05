@@ -53,6 +53,7 @@
       <exported-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" table="auth_user_user_permissions" schema="" catalog="test" columns="user_id"/>
       <exported-key name="django_admin_log_user_id_1c5f563_fk_auth_user_id" table="django_admin_log" schema="" catalog="test" columns="user_id"/>
       <exported-key name="rango_userprofile_user_id_77f0b36_fk_auth_user_id" table="rango_userprofile" schema="" catalog="test" columns="user_id"/>
+      <exported-key name="registration_registrationprofil_user_id_3f7685bb_fk_auth_user_id" table="registration_registrationprofile" schema="" catalog="test" columns="user_id"/>
       <index name="username" unique="true" columns="username"/>
     </table>
     <table name="auth_user_groups" schema="" catalog="test" type="TABLE">
@@ -614,6 +615,13 @@
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="rango_userprofile_user_id_77f0b36_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="registration_registrationprofile" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="activation_key" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="registration_registrationprofil_user_id_3f7685bb_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="stock_data" schema="" catalog="test" type="TABLE">
       <column name="amount" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>
