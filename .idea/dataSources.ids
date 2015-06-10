@@ -20,8 +20,8 @@
       <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="group_id" unique="true" columns="permission_id"/>
       <index name="auth_group_permissi_permission_id_23962d04_fk_auth_permission_id" unique="false" columns="permission_id"/>
     </table>
@@ -71,8 +71,8 @@
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="user_id" unique="true" columns="permission_id"/>
       <index name="auth_user_user_perm_permission_id_3d7071f0_fk_auth_permission_id" unique="false" columns="permission_id"/>
     </table>
@@ -186,6 +186,12 @@
       <column name="expire_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="session_key"/>
       <index name="django_session_de54fa62" unique="false" columns="expire_date"/>
+    </table>
+    <table name="django_site" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="domain" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="fund_Close_FD" schema="" catalog="test" type="TABLE">
       <column name="F_name" sqlType="VARCHAR" precision="63" scale="0" nullable="true" jdbcType="12"/>

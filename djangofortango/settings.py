@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rango',
     'registration',
 )
@@ -140,3 +141,23 @@ REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged
 LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
                                                                 # and are trying to access pages requiring authentication
+# seting site_id for site model
+SITE_ID = 1
+
+# setup mail sending
+#For email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.live.com'
+
+EMAIL_HOST_USER = 'frankwzhg@hotmail.com'
+
+#Must generate specific password for your app in [gmail settings][1]
+EMAIL_HOST_PASSWORD = 'Frank009216'
+
+# EMAIL_PORT = 587
+
+#This did the trick
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
