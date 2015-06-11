@@ -12,7 +12,7 @@
 {% block body_block %}
     {% if user.is_authenticated %}
         <div class="page-header">
-            <h1>Rango say... hello {{ user.username }}</h1><br />
+        <h1>Rango say... hello {{ user.username }}</h1><br />
         <p>your visit this website No.:{{ visits }}</p>
         <p style="color:red" >you can change your <a href="{% url 'auth_password_change' %}">password</a></p>
         <a href="{% url 'restricted' %}">Restricted Page</a><br />
@@ -24,35 +24,39 @@
     hello world!<strong>{{ boldmessage }}</strong><br />
     {% endif %}
         </div>
-    <div class="row placeholder">
+    <div class="row placeholders">
         <div class="col-xs-12 col-sm-6 placeholder">
-          {% if categories %}
-        <ul>
-        {% for category in categories %}
-        <li><a href="{% url 'category' category.slug %}" >{{ category.name }}</a></li>
-        {% endfor %}
-        {% for page in pages %}
-        <li>{{ page }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no categories present</strong>
-    {% endif %}
-        </div>
-    <div class="col-xs-12 col-sm-6 placeholder">
-              <h4>Pages</h4>
+            <h4>Categories</h4>
+            {% if categories %}
 
-                {% if pages %}
-                    <ul>
-                        {% for page in pages %}
-                         <li><a href="{{page.url}}">{{ page.title }}</a></li>
-                        {% endfor %}
-                    </ul>
+        <ul class="list-group">
+        {% for category in categories %}
+        <li class="list-group-item"><a href="{% url 'category' category.slug %}" >{{ category.name }}</a></li>
+        {% endfor %}
+
+        </ul>
+            {% else %}
+                <strong>There are no categories present</strong>
+            {% endif %}
+        </div>
+
+        <div class="col-xs-12 col-sm-6 placeholder">
+            <h4>Pages</h4>
+            {% if pages %}
+                    {% for page in pages %}
+                         <li class="list-group-item"><a href="{{page.url}}">{{ page.title }}</a></li>
+                    {% endfor %}
+
+
                 {% else %}
                     <strong>There are no categories present.</strong>
                 {% endif %}
-            </div>
+        </div>
+
     </div>
+
+
+
 
     <a href="{% url 'add_category' %}">Add a New Category</a><br />
     <a href="{% url 'register' %}">Register Here</a><br />
