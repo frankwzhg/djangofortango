@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from rango.bing_search import run_query
 # Create your views here.
 
 def index(request):
@@ -260,4 +261,14 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/rango/')
 
+def search(request):
+    result_list = []
 
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            # Run our run_query function to get the result list!
+            result_list = run_query(query)
+
+    return render(request, 'rango/search.html', {'result_list': result_list})

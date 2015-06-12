@@ -1,10 +1,5 @@
-import os
 import json
 import urllib, urllib2
-
-# Add your BING_API_KEY
-
-BING_API_KEY = os.environ.get('BING_API_KEY')
 
 def run_query(search_terms):
     # Specify the base
@@ -34,11 +29,12 @@ def run_query(search_terms):
     # Setup authentication with the Bing servers.
     # The username MUST be a blank string, and put in your API key!
     username = ''
-
+    # bing_api_key = 'SzZ7IBDQGh8XjREe90+33iDoArIae2oAJmS50smInNE'
+    bing_api_key = 'AgtSsSw/u2vwN0EB9ucrqVmwDbhrQ2BJBuasWVxVMl0'
 
     # Create a 'password manager' which handles authentication for us.
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, search_url, username, BING_API_KEY)
+    password_mgr.add_password(None, search_url, username, bing_api_key)
 
     # Create our results list which we'll populate.
     results = []
@@ -58,9 +54,9 @@ def run_query(search_terms):
         # Loop through each page returned, populating out results list.
         for result in json_response['d']['results']:
             results.append({
-            'title': result['Title'],
-            'link': result['Url'],
-            'summary': result['Description']})
+                'title': result['Title'],
+                'link': result['Url'],
+                'summary': result['Description']})
 
     # Catch a URLError exception - something went wrong when connecting!
     except urllib2.URLError, e:
@@ -69,5 +65,5 @@ def run_query(search_terms):
     # Return the list of results to the calling function.
     return results
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print run_query('rango')
