@@ -44,7 +44,7 @@
                         <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
                         <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
                         <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-                        <li><a href="{% url 'search' %}">Search</a> </li>
+{#                        <li><a href="{% url 'search' %}">Search</a> </li>#}
                     {% else %}
                         <li><a href="{% url 'registration_register' %}">Register Here</a></li>
                         <li><a href="{% url 'auth_login' %}">Login</a></li>
@@ -83,10 +83,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'bootstrap/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static 'bootstrap/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'js/rango-jquery.js' %}"></script>
+    <script src="{% static 'js/rango-ajax.js' %}"></script>
   </body>
 </html>
 

@@ -11,7 +11,8 @@
     <div class="row">
         <div class="panel panel-primary">
             <br />
-            <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">
+{#            <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">#}
+             <form class="form-inline" id="user_form" method="post" action="{% url 'category'  category.slug %}">
                 {% csrf_token %}
                 <!-- Display the search form element here -->
                 <input class="form_control" type="text" size="50" name="query" value="" id="query" />
