@@ -71,6 +71,16 @@
         <div class="col-sm-3 col-md-2 sidebar">
 
         {% block side_block %}
+            <ul class="nav nav-list">
+            <li class="nav-header">Find a Category</li>
+            <form>
+            <label></label>
+            <li><input  class="search-query span10" type="text" name="suggestion" value="" id="suggestion" /></li>
+            </form>
+            </ul>
+
+            <div id="cats">
+            </div>
         {% get_category_list category %}
         {% endblock %}
 
